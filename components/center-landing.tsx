@@ -4,31 +4,8 @@ import { useState, useEffect } from "react";
 import { ServiceCard } from "./service-card";
 import { BookingModal } from "./booking-modal";
 import type { Service } from "@/lib/types";
-
-const centerData: Record<
-  string,
-  {
-    name: string;
-    description: string;
-    logo: string;
-  }
-> = {
-  center1: {
-    name: "Glow Beauty Studio",
-    description: "Premium beauty and wellness center with expert professionals",
-    logo: "✨",
-  },
-  center2: {
-    name: "Radiance Spa & Salon",
-    description: "Luxury spa and salon services for ultimate relaxation",
-    logo: "💆",
-  },
-  center3: {
-    name: "Zen Beauty Lounge",
-    description: "Holistic beauty and relaxation experiences",
-    logo: "🧘",
-  },
-};
+import { CENTERS } from "@/lib/constants";
+import { Center } from "@/lib/types";
 
 export function CenterLanding({
   params,
@@ -38,6 +15,7 @@ export function CenterLanding({
   const [resolvedParams, setResolvedParams] = useState<{
     center: string;
   } | null>(null);
+  const [center, setCenter] = useState<Center>(CENTERS[0]);
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedService, setSelectedService] = useState<Service | null>(null);
@@ -57,6 +35,11 @@ export function CenterLanding({
       setLoading(true);
       // Simulate API delay
       await new Promise((resolve) => setTimeout(resolve, 1500));
+      const center =
+        CENTERS.find((center) => center.id === resolvedParams.center) ||
+        CENTERS[0];
+
+      setCenter(center);
 
       const mockServices: Service[] = [
         {
@@ -108,13 +91,16 @@ export function CenterLanding({
     );
   }
 
-  const center = centerData[resolvedParams.center] || centerData.center1;
-
   return (
     <main className="min-h-screen bg-background">
-      <header className="relative text-primary-foreground py-16 border-b border-border">
-        <div className="absolute w-full h-full top-0 bg-gradient-to-r from-primary/10 via-primary/80 to-secondary"></div>
-        <div className="container mx-auto px-4 max-w-6xl">
+      <header
+        style={{
+          backgroundImage: `url(${center.image})`,
+        }}
+        className={`relative bg-cover bg-no-repeat bg-center h-[400px] text-primary-foreground flex items-center`}
+      >
+        <div className="absolute w-full h-full top-0 bg-gradient-to-l from-primary/10 via-primary/80 to-secondary"></div>
+        <div className="relative z-10 container mx-auto px-4 max-w-6xl">
           <div className="flex items-center gap-8 mb-8">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold mb-2">

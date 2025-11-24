@@ -1,12 +1,7 @@
-interface CenterCardProps {
-  name: string;
-  image: string;
-  description: string;
-}
+import { Center } from "@/lib/types";
+import { TRANSITIONS_STYLES } from "@/lib/constants";
 
-const TRANSITIONS_STYLES = `transition-all duration-300 ease-in-out`;
-
-export function CenterCard({ name, image, description }: CenterCardProps) {
+export function CenterCard({ name, image, description }: Center) {
   return (
     <div className="border rounded-xl transition-all duration-300 cursor-pointer h-full hover:border-primary/30 overflow-hidden">
       <img
