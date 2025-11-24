@@ -112,10 +112,10 @@ export function CenterLanding({
 
   return (
     <main className="min-h-screen bg-background">
-      <header className="bg-gradient-to-r from-primary via-primary/80 to-secondary text-primary-foreground py-16 border-b border-border">
+      <header className="relative text-primary-foreground py-16 border-b border-border">
+        <div className="absolute w-full h-full top-0 bg-gradient-to-r from-primary/10 via-primary/80 to-secondary"></div>
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="flex items-center gap-8 mb-8">
-            <div className="text-6xl drop-shadow-lg">{center.logo}</div>
             <div>
               <h1 className="text-4xl md:text-5xl font-bold mb-2">
                 {center.name}
