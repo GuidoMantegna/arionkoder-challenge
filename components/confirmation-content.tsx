@@ -49,9 +49,9 @@ export function ConfirmationContent() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-primary/5 to-background py-12">
+    <main className="bg-secondary min-h-screen bg-gradient-to-b from-secondary/5 to-background py-12">
       <div className="container mx-auto px-4 max-w-md">
-        <div className="bg-card border border-border rounded-2xl shadow-lg p-8">
+        <div className="bg-white border border-border rounded-2xl shadow-lg p-8">
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100/20 border-2 border-green-500/30 rounded-full mb-4">
               <span className="text-3xl font-bold text-green-600">✓</span>
