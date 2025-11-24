@@ -1,43 +1,52 @@
-"use client"
+"use client";
 
-import { useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
-import type { Booking } from "@/lib/types"
-import Link from "next/link"
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import type { Booking } from "@/lib/types";
+import Link from "next/link";
 
 export function ConfirmationContent() {
-  const searchParams = useSearchParams()
-  const [booking, setBooking] = useState<Booking | null>(null)
-  const [loading, setLoading] = useState(true)
+  const searchParams = useSearchParams();
+  const [booking, setBooking] = useState<Booking | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const bookingId = searchParams.get("bookingId")
-
+    const bookingId = searchParams.get("bookingId");
+    console.log(bookingId);
     if (bookingId) {
-      const savedBooking = localStorage.getItem(`booking_${bookingId}`)
+      const savedBooking = localStorage.getItem(`booking_${bookingId}`);
       if (savedBooking) {
-        setBooking(JSON.parse(savedBooking))
+        setBooking(JSON.parse(savedBooking));
       }
     }
 
-    setLoading(false)
-  }, [searchParams])
+    setLoading(false);
+  }, [searchParams]);
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center">Loading...</div>
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        Loading...
+      </div>
+    );
   }
 
   if (!booking) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-foreground mb-4">Booking Not Found</h1>
-          <Link href="/" className="text-primary hover:text-primary/80 font-medium">
+          <h1 className="text-2xl font-bold text-foreground mb-4">
+            Booking Not Found
+          </h1>
+          <Link
+            href="/"
+            className="text-primary hover:text-primary/80 font-medium"
+          >
             ← Return to Home
           </Link>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -48,20 +57,28 @@ export function ConfirmationContent() {
             <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100/20 border-2 border-green-500/30 rounded-full mb-4">
               <span className="text-3xl font-bold text-green-600">✓</span>
             </div>
-            <h1 className="text-3xl font-bold text-foreground mb-2">Booking Confirmed</h1>
+            <h1 className="text-3xl font-bold text-foreground mb-2">
+              Booking Confirmed
+            </h1>
             <p className="text-muted-foreground">Your appointment is all set</p>
           </div>
 
           {/* Booking Details */}
           <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 mb-6 space-y-4">
             <div>
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Service</p>
-              <p className="font-semibold text-foreground text-lg">{booking.serviceName}</p>
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
+                Service
+              </p>
+              <p className="font-semibold text-foreground text-lg">
+                {booking.serviceName}
+              </p>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Date</p>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
+                  Date
+                </p>
                 <p className="font-semibold text-foreground">
                   {new Date(booking.date).toLocaleDateString("en-US", {
                     weekday: "short",
@@ -71,37 +88,54 @@ export function ConfirmationContent() {
                 </p>
               </div>
               <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Time</p>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
+                  Time
+                </p>
                 <p className="font-semibold text-foreground">{booking.time}</p>
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Duration</p>
-                <p className="font-semibold text-foreground">{booking.duration} min</p>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
+                  Duration
+                </p>
+                <p className="font-semibold text-foreground">
+                  {booking.duration} min
+                </p>
               </div>
               <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Price</p>
-                <p className="font-bold text-lg text-primary">${booking.price}</p>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
+                  Price
+                </p>
+                <p className="font-bold text-lg text-primary">
+                  ${booking.price}
+                </p>
               </div>
             </div>
 
             <div className="pt-4 border-t border-primary/20">
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Client Name</p>
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
+                Client Name
+              </p>
               <p className="font-semibold text-foreground">{booking.name}</p>
             </div>
 
             <div>
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Email</p>
-              <p className="font-semibold text-foreground break-all">{booking.email}</p>
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
+                Email
+              </p>
+              <p className="font-semibold text-foreground break-all">
+                {booking.email}
+              </p>
             </div>
           </div>
 
           {/* Confirmation Message */}
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
             <p className="text-sm text-blue-900">
-              A confirmation email has been sent to <strong>{booking.email}</strong>
+              A confirmation email has been sent to{" "}
+              <strong>{booking.email}</strong>
             </p>
           </div>
 
@@ -123,5 +157,5 @@ export function ConfirmationContent() {
         </div>
       </div>
     </main>
-  )
+  );
 }
