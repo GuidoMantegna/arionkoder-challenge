@@ -1,58 +1,63 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { validateBooking } from "@/lib/validation"
-import type { Service, Booking } from "@/lib/types"
+import { useState } from "react";
+import { validateBooking } from "@/lib/validation";
+import type { Service, Booking } from "@/lib/types";
 
 interface BookingFormProps {
-  service: Service
-  centerId: string
-  onSuccess: (booking: Booking) => void
-  onCancel: () => void
+  service: Service;
+  centerId: string;
+  onSuccess: (booking: Booking) => void;
+  onCancel: () => void;
 }
 
-export function BookingForm({ service, centerId, onSuccess, onCancel }: BookingFormProps) {
+export function BookingForm({
+  service,
+  centerId,
+  onSuccess,
+  onCancel,
+}: BookingFormProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     date: "",
     time: "",
-  })
+  });
 
-  const [errors, setErrors] = useState<Record<string, string>>({})
-  const [submitting, setSubmitting] = useState(false)
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
+    }));
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
         [name]: "",
-      }))
+      }));
     }
-  }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setErrors({})
+    e.preventDefault();
+    setErrors({});
 
-    const validation = validateBooking(formData)
+    const validation = validateBooking(formData);
     if (!validation.valid) {
-      setErrors(validation.errors)
-      return
+      setErrors(validation.errors);
+      return;
     }
 
-    setSubmitting(true)
+    setSubmitting(true);
 
     // Simulate API submission
-    await new Promise((resolve) => setTimeout(resolve, 500))
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
     const booking: Booking = {
       id: `booking_${Date.now()}`,
@@ -66,20 +71,25 @@ export function BookingForm({ service, centerId, onSuccess, onCancel }: BookingF
       price: service.price,
       duration: service.duration,
       createdAt: new Date().toISOString(),
-    }
+    };
 
-    onSuccess(booking)
-  }
+    onSuccess(booking);
+  };
 
   // Get tomorrow's date as minimum
-  const tomorrow = new Date()
-  tomorrow.setDate(tomorrow.getDate() + 1)
-  const minDate = tomorrow.toISOString().split("T")[0]
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const minDate = tomorrow.toISOString().split("T")[0];
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-4 max-h-[50vh] overflow-y-auto"
+    >
       <div>
-        <label className="block text-sm font-semibold text-foreground mb-2">Full Name</label>
+        <label className="block text-sm font-semibold text-foreground mb-2">
+          Full Name
+        </label>
         <input
           type="text"
           name="name"
@@ -92,11 +102,15 @@ export function BookingForm({ service, centerId, onSuccess, onCancel }: BookingF
               : "border-border focus:ring-2 focus:ring-primary/20"
           }`}
         />
-        {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+        {errors.name && (
+          <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+        )}
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-foreground mb-2">Email</label>
+        <label className="block text-sm font-semibold text-foreground mb-2">
+          Email
+        </label>
         <input
           type="email"
           name="email"
@@ -109,11 +123,15 @@ export function BookingForm({ service, centerId, onSuccess, onCancel }: BookingF
               : "border-border focus:ring-2 focus:ring-primary/20"
           }`}
         />
-        {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+        {errors.email && (
+          <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+        )}
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-foreground mb-2">Date</label>
+        <label className="block text-sm font-semibold text-foreground mb-2">
+          Date
+        </label>
         <input
           type="date"
           name="date"
@@ -126,11 +144,15 @@ export function BookingForm({ service, centerId, onSuccess, onCancel }: BookingF
               : "border-border focus:ring-2 focus:ring-primary/20"
           }`}
         />
-        {errors.date && <p className="text-red-500 text-sm mt-1">{errors.date}</p>}
+        {errors.date && (
+          <p className="text-red-500 text-sm mt-1">{errors.date}</p>
+        )}
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-foreground mb-2">Time</label>
+        <label className="block text-sm font-semibold text-foreground mb-2">
+          Time
+        </label>
         <input
           type="time"
           name="time"
@@ -142,25 +164,27 @@ export function BookingForm({ service, centerId, onSuccess, onCancel }: BookingF
               : "border-border focus:ring-2 focus:ring-primary/20"
           }`}
         />
-        {errors.time && <p className="text-red-500 text-sm mt-1">{errors.time}</p>}
+        {errors.time && (
+          <p className="text-red-500 text-sm mt-1">{errors.time}</p>
+        )}
       </div>
 
       <div className="flex gap-3 pt-6">
         <button
           type="submit"
           disabled={submitting}
-          className="flex-1 bg-primary hover:bg-primary/90 disabled:bg-primary/50 text-primary-foreground font-semibold py-3 px-4 rounded-lg transition-all active:scale-95"
+          className="flex-1 bg-primary hover:bg-primary/90 disabled:bg-primary/50 text-primary-foreground font-semibold py-3 px-4 rounded-lg transition-all active:scale-95 cursor-pointer"
         >
           {submitting ? "Booking..." : "Confirm Booking"}
         </button>
         <button
           type="button"
           onClick={onCancel}
-          className="flex-1 bg-muted text-foreground hover:bg-muted/80 font-semibold py-3 px-4 rounded-lg transition-colors"
+          className="flex-1 bg-muted text-foreground hover:bg-muted/80 font-semibold py-3 px-4 rounded-lg transition-colors cursor-pointer"
         >
           Cancel
         </button>
       </div>
     </form>
-  )
+  );
 }

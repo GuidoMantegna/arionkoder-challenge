@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from "next/link";
 
 const centers = [
   {
@@ -16,7 +16,7 @@ const centers = [
     name: "Zen Beauty Lounge",
     description: "Holistic beauty and relaxation",
   },
-]
+];
 
 export default function Home() {
   return (
@@ -27,13 +27,16 @@ export default function Home() {
             Beauty & Wellness Bookings
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Discover premium beauty centers and book your perfect appointment in seconds
+            Discover premium beauty centers and book your perfect appointment in
+            seconds
           </p>
         </div>
       </div>
 
       <div className="container mx-auto px-4 py-12 max-w-5xl">
-        <h2 className="text-2xl font-semibold text-foreground mb-10 text-center">Featured Beauty Centers</h2>
+        <h2 className="text-2xl font-semibold text-foreground mb-10 text-center">
+          Featured Beauty Centers
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {centers.map((center) => (
@@ -60,9 +63,12 @@ export default function Home() {
 
       <footer className="bg-foreground/5 mt-20 py-8 px-4 border-t border-border">
         <div className="container mx-auto max-w-5xl text-center text-muted-foreground text-sm">
-          <p>© 2025 Beauty Booking System. Crafted with care for your beauty journey.</p>
+          <p>
+            © 2025 Beauty Booking System. Crafted with care for your beauty
+            journey by Guido Mantegna.
+          </p>
         </div>
       </footer>
     </main>
-  )
+  );
 }
