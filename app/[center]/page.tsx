@@ -1,18 +1,22 @@
-import { CenterLanding } from "@/components/center-landing"
+import { CenterLanding } from "@/components/center-landing";
+import { CENTERS } from "@/lib/constants";
 
-export async function generateMetadata({params}: {params: Promise<{center: string}>}) {
-  const {center} = await params;
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ center: string }>;
+}) {
+  const { center } = await params;
 
   return {
-    title: center,
+    title: CENTERS.find((item) => item.id === center)?.name,
   };
 }
-
 
 export default function CenterPage({
   params,
 }: {
-  params: Promise<{ center: string }>
+  params: Promise<{ center: string }>;
 }) {
-  return <CenterLanding params={params} />
+  return <CenterLanding params={params} />;
 }
