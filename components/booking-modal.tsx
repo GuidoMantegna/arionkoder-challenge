@@ -20,6 +20,7 @@ export function BookingModal({
       <div className="bg-background rounded-lg max-w-md w-full">
         <div className="p-6 border-b border-border flex justify-between items-center">
           <h2 className="text-2xl font-bold text-foreground">
+            <p className="text-sm text-primary">Selected Service</p>
             Book {service.name}
           </h2>
           <button
@@ -31,11 +32,13 @@ export function BookingModal({
         </div>
 
         <div className="p-6">
-          <div className="bg-primary/5 rounded-lg p-4 mb-6">
-            <p className="text-sm text-muted mb-2">Selected Service</p>
-            <p className="font-semibold text-foreground">{service.name}</p>
-            <p className="text-sm text-muted mt-2">
-              {service.duration} min • ${service.price}
+          <div className="bg-primary rounded-lg p-4 mb-6">
+            <p className="text-muted">
+              Duration
+              <span className="font-semibold ml-2">{service.duration} min</span>
+            </p>
+            <p className="text-muted">
+              Price <span className="font-semibold ml-2">${service.price}</span>
             </p>
           </div>
 

@@ -23,3 +23,5 @@ export const CENTERS: Center[] = [
     image: "/zen-bg.jpg",
   },
 ];
+
+export const TRANSITIONS_STYLES: string = `transition-all duration-300 ease-in-out`;

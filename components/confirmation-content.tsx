@@ -12,7 +12,6 @@ export function ConfirmationContent() {
 
   useEffect(() => {
     const bookingId = searchParams.get("bookingId");
-    console.log(bookingId);
     if (bookingId) {
       const savedBooking = localStorage.getItem(`booking_${bookingId}`);
       if (savedBooking) {
