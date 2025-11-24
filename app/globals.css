@@ -11,10 +11,10 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.1 0 0);
   /* Updated primary to elegant purple for beauty aesthetic */
-  --primary: oklch(0.55 0.22 290);
+  --primary: var(--color-custom-1);
   --primary-foreground: oklch(0.99 0 0);
   /* Updated secondary to warm rose gold accent */
-  --secondary: oklch(0.7 0.15 40);
+  --secondary: var(--color-custom-2);
   --secondary-foreground: oklch(0.1 0 0);
   --muted: oklch(0.92 0.01 0);
   --muted-foreground: oklch(0.55 0 0);
@@ -40,6 +40,14 @@
   --sidebar-accent-foreground: oklch(0.99 0 0);
   --sidebar-border: oklch(0.94 0.01 0);
   --sidebar-ring: oklch(0.55 0.22 290);
+  --color-custom-1: #706d54;
+  --color-custom-2: #a08963;
+  --color-custom-3: #c9b194;
+  --color-custom-4: #dbdbdb;
+}
+
+.bg-card {
+  background-color: var(--color-custom-3);
 }
 
 .dark {
@@ -124,5 +132,14 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    /* Apply font imported in layout.tsx */
+    font-family: var(--font-playfair), serif;
   }
 }
