@@ -5,6 +5,7 @@ A modern Next.js booking system MVP that allows clients to view beauty center se
 ## Features
 
 ✨ **Core Functionality**
+
 - Multi-tenant support with dynamic routing (`/[center]`)
 - Browse available services with details
 - Book appointments with form validation
@@ -12,6 +13,7 @@ A modern Next.js booking system MVP that allows clients to view beauty center se
 - LocalStorage persistence for bookings
 
 🎨 **Design & UX**
+
 - Professional TailwindCSS styling
 - Responsive mobile-first design
 - Loading states and error handling
@@ -19,6 +21,7 @@ A modern Next.js booking system MVP that allows clients to view beauty center se
 - Color-coded feedback (success, errors)
 
 ⚙️ **Technical**
+
 - Next.js 16 with App Router
 - TypeScript for type safety
 - Form validation with custom rules
@@ -36,14 +39,17 @@ A modern Next.js booking system MVP that allows clients to view beauty center se
 ## Installation & Setup
 
 ### Option 1: Using shadcn CLI (Recommended)
+
 \`\`\`bash
 npm install -g @shadcn-cli/auto
 shadcn-cli@latest init -d
 
 # Copy the code into your project
+
 \`\`\`
 
 ### Option 2: Manual Setup
+
 \`\`\`bash
 git clone <repository-url>
 cd beauty-booking-system
@@ -56,15 +62,18 @@ Visit `http://localhost:3000` in your browser.
 ## Usage
 
 1. **Home Page** (`/`)
+
    - Browse available beauty centers
    - Click on a center to view services
 
 2. **Center Landing** (`/[center]`)
+
    - View all services offered by the center
    - See service details (duration, price, description)
    - Click "Book Now" to open booking form
 
 3. **Booking Flow**
+
    - Fill in personal details (name, email)
    - Select date (must be tomorrow or later)
    - Select time (9 AM - 6 PM)
@@ -79,27 +88,28 @@ Visit `http://localhost:3000` in your browser.
 \`\`\`
 src/
 ├── app/
-│   ├── layout.tsx           # Root layout with metadata
-│   ├── globals.css          # Global styles & design tokens
-│   ├── page.tsx             # Home page with center list
-│   └── [center]/
-│       ├── page.tsx         # Dynamic center landing
-│       └── confirmation/
-│           └── page.tsx     # Booking confirmation
+│ ├── layout.tsx # Root layout with metadata
+│ ├── globals.css # Global styles & design tokens
+│ ├── page.tsx # Home page with center list
+│ └── [center]/
+│ ├── page.tsx # Dynamic center landing
+│ └── confirmation/
+│ └── page.tsx # Booking confirmation
 ├── components/
-│   ├── center-landing.tsx   # Main landing component
-│   ├── service-card.tsx     # Service display card
-│   ├── booking-modal.tsx    # Modal wrapper
-│   ├── booking-form.tsx     # Form with validation
-│   └── confirmation-content.tsx  # Confirmation details
+│ ├── center-landing.tsx # Main landing component
+│ ├── service-card.tsx # Service display card
+│ ├── booking-modal.tsx # Modal wrapper
+│ ├── booking-form.tsx # Form with validation
+│ └── confirmation-content.tsx # Confirmation details
 └── lib/
-    ├── types.ts            # TypeScript interfaces
-    └── validation.ts       # Form validation logic
+├── types.ts # TypeScript interfaces
+└── validation.ts # Form validation logic
 \`\`\`
 
 ## Technical Decisions & Assumptions
 
 ### Decisions
+
 1. **Dynamic Routes**: Used `[center]` parameter for multi-tenant support instead of subdomain routing
 2. **Client Components**: Booking flow uses client components for real-time validation feedback
 3. **LocalStorage**: Chose LocalStorage over backend for MVP scope while keeping API patterns ready
@@ -107,6 +117,7 @@ src/
 5. **Design Tokens**: Implemented CSS variables for consistent theming and easy customization
 
 ### Assumptions
+
 - Services are pre-defined per center (not user-customizable in MVP)
 - Business hours are 9 AM - 6 PM
 - Minimum booking notice is 1 day
@@ -129,11 +140,15 @@ src/
 ### Deploy to Vercel (Recommended)
 
 \`\`\`bash
+
 # Push to GitHub first
+
 git push origin main
 
 # Deploy via Vercel Dashboard
+
 # https://vercel.com/new
+
 \`\`\`
 
 Or use Vercel CLI:
@@ -145,13 +160,24 @@ vercel
 ## Environment Variables
 
 No environment variables required for the MVP. Ready to add:
+
 - `NEXT_PUBLIC_API_URL` - Backend API endpoint
 - `DATABASE_URL` - Database connection
 - `EMAIL_SERVICE_KEY` - Email provider API key
 
+## Tests
+
+The test coverage focuses on critical business logic that directly impacts user experience and data integrity, ensuring the booking system remains reliable as you develop further features.
+
+**To run the tests**, use:
+
+- `npm run test` - Run tests once
+- `npm run test:watch` - Run tests in watch mode during development
+
 ## Design System
 
 ### Colors
+
 - **Primary**: Purple (#8b5cf6) - Main CTAs and branding
 - **Primary Dark**: Deeper purple (#7c3aed) - Hover states
 - **Secondary**: Cyan (#06b6d4) - Accent elements
@@ -159,6 +185,7 @@ No environment variables required for the MVP. Ready to add:
 - **Neutral**: Gray scale for text and borders
 
 ### Typography
+
 - **Headings**: Geist (sans-serif)
 - **Body**: Geist (sans-serif)
 - **Monospace**: Geist Mono (for technical content)
@@ -184,6 +211,7 @@ No environment variables required for the MVP. Ready to add:
 ## AI Tool Documentation
 
 This project was generated with v0 (Vercel AI). The following features were AI-assisted:
+
 - Architecture and component structure design
 - Form validation logic
 - TypeScript type definitions

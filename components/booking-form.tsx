@@ -87,12 +87,16 @@ export function BookingForm({
       className="space-y-4 max-h-[50vh] overflow-y-auto"
     >
       <div>
-        <label className="block text-sm font-semibold text-foreground mb-2">
+        <label
+          htmlFor="fullName"
+          className="block text-sm font-semibold text-foreground mb-2"
+        >
           Full Name
         </label>
         <input
           type="text"
           name="name"
+          id="fullName"
           value={formData.name}
           onChange={handleChange}
           placeholder="John Doe"
@@ -108,12 +112,16 @@ export function BookingForm({
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-foreground mb-2">
+        <label
+          htmlFor="email"
+          className="block text-sm font-semibold text-foreground mb-2"
+        >
           Email
         </label>
         <input
-          type="email"
+          // type="email"
           name="email"
+          id="email"
           value={formData.email}
           onChange={handleChange}
           placeholder="john@example.com"
@@ -129,12 +137,17 @@ export function BookingForm({
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-foreground mb-2">
+        <label
+          htmlFor="date"
+          className="block text-sm font-semibold text-foreground mb-2"
+        >
           Date
         </label>
         <input
           type="date"
           name="date"
+          id="date"
+          role="textbox"
           value={formData.date}
           onChange={handleChange}
           min={minDate}
@@ -150,12 +163,17 @@ export function BookingForm({
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-foreground mb-2">
+        <label
+          htmlFor="time"
+          className="block text-sm font-semibold text-foreground mb-2"
+        >
           Time
         </label>
         <input
           type="time"
           name="time"
+          id="time"
+          role="textbox"
           value={formData.time}
           onChange={handleChange}
           className={`w-full px-4 py-3 border rounded-lg focus:outline-none transition-all ${
