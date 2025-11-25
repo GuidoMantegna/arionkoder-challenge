@@ -22,7 +22,16 @@ const _gfsDidot = GFS_Didot({ weight: "400", subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Beauty Centers",
   description: "Beauty & Wellness Bookings",
-  generator: "v0.app",
+  openGraph: {
+    images: [
+      {
+        url: "https://damaraspayorkville.com/cdn/shop/files/indie-head-massage-treatment-toronto_1.jpg?v=1738248036&width=800",
+        width: 1200,
+        height: 630,
+        alt: "Beauty Centers",
+      },
+    ],
+  },
   icons: {
     icon: [
       {
