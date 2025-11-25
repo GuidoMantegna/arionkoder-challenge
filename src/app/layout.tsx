@@ -8,8 +8,11 @@ import {
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const _geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
+const _geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geistMono",
+});
 const _playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
@@ -23,11 +26,19 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/favicon.png",
-        type: "image/png",
+        url: "/heartbeat-solid.png",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/heartbeat-outline.png",
+        media: "(prefers-color-scheme: dark)",
+      },
+      {
+        url: "/heartbeat-outline.png",
+        type: "image/svg+xml",
       },
     ],
-    apple: "/back-img-1.png",
+    apple: "/heartbeat-outline.png",
   },
 };
 
@@ -37,8 +48,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`font-sans antialiased ${_playfairDisplay.className}`}>
+    <html
+      lang="en"
+      className={`font-sans antialiased ${_playfairDisplay.variable} ${_geist.variable}`}
+    >
+      <body>
         {children}
         <Analytics />
       </body>

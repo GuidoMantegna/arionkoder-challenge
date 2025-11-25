@@ -9,10 +9,10 @@ export default async function Home() {
     <main className="min-h-screen bg-background">
       <div className="h-[65vh] md:h-[350px] bg-[url(/back-img-1.png)] bg-cover bg-no-repeat bg-center">
         <div className="container mx-auto max-w-5xl text-center">
-          <h1 className="pt-10 text-5xl md:text-6xl font-bold mb-4 tracking-tight">
+          <h1 className="pt-10 text-5xl md:text-6xl mb-4 tracking-tight">
             Beauty & Wellness Bookings
           </h1>
-          <p className="text-lg md:text-xl max-w-2xl mx-auto text-foreground">
+          <p className="text-md max-w-2xl mx-auto text-foreground">
             Discover premium beauty centers and book your perfect appointment in
             seconds
           </p>
