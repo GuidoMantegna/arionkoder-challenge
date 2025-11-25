@@ -6,15 +6,20 @@ interface BookingModalProps {
   service: Service;
   centerId: string;
   onClose: () => void;
-  onBookingComplete: (booking: Booking) => void;
 }
 
 export function BookingModal({
   service,
   centerId,
   onClose,
-  onBookingComplete,
 }: BookingModalProps) {
+  const onSuccess = (booking: Booking) => {
+    // Save booking and redirect
+    const BOOKING_ID = Date.now();
+    localStorage.setItem(`booking_${BOOKING_ID}`, JSON.stringify(booking));
+    window.location.href = `/[center]/confirmation?center=${centerId}&bookingId=${BOOKING_ID}`;
+  };
+
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
       <div className="bg-background rounded-lg max-w-md w-full">
@@ -45,8 +50,8 @@ export function BookingModal({
           <BookingForm
             service={service}
             centerId={centerId}
-            onSuccess={onBookingComplete}
             onCancel={onClose}
+            onSuccess={onSuccess}
           />
         </div>
       </div>

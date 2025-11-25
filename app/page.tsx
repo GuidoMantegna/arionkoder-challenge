@@ -1,7 +1,10 @@
 import Link from "next/link";
-import { CENTERS } from "@/lib/constants";
+// import { CENTERS } from "@/lib/constants";
 import { CenterCard } from "@/components/center-card";
-export default function Home() {
+import api from "@/lib/api";
+export default async function Home() {
+  const CENTERS = await api.listCenters();
+
   return (
     <main className="min-h-screen bg-background">
       <div className="h-[300px] bg-[url(/back-img-1.png)] bg-cover bg-no-repeat bg-center">

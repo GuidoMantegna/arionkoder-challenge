@@ -9,15 +9,15 @@ import type { Service, Booking } from "@/lib/types";
 interface BookingFormProps {
   service: Service;
   centerId: string;
-  onSuccess: (booking: Booking) => void;
   onCancel: () => void;
+  onSuccess: (booking: Booking) => void;
 }
 
 export function BookingForm({
   service,
   centerId,
-  onSuccess,
   onCancel,
+  onSuccess,
 }: BookingFormProps) {
   const [formData, setFormData] = useState({
     name: "",

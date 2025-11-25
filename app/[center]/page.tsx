@@ -1,5 +1,5 @@
 import { CenterLanding } from "@/components/center-landing";
-import { CENTERS } from "@/lib/constants";
+import api from "@/lib/api";
 
 export async function generateMetadata({
   params,
@@ -7,9 +7,10 @@ export async function generateMetadata({
   params: Promise<{ center: string }>;
 }) {
   const { center } = await params;
+  const centerData = await api.fetch(center);
 
   return {
-    title: CENTERS.find((item) => item.id === center)?.name,
+    title: centerData.name,
   };
 }
 
