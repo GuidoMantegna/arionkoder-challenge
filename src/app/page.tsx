@@ -12,7 +12,7 @@ export default async function Home() {
           <h1 className="pt-10 text-5xl md:text-6xl mb-4 tracking-tight">
             Beauty & Wellness Bookings
           </h1>
-          <p className="text-md max-w-2xl mx-auto text-foreground">
+          <p className="text-xl max-w-2xl mx-auto font-light">
             Discover premium beauty centers and book your perfect appointment in
             seconds
           </p>
