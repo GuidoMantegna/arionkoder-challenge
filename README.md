@@ -2,12 +2,16 @@
 
 A modern Next.js booking system MVP that allows clients to view beauty center services and schedule appointments online.
 
+**🚀 Deploy:** https://arionkoder-challenge.vercel.app/
+**📂 Repo:** https://github.com/GuidoMantegna/arionkoder-challenge
+**⏱️ Total time invested:** 24hrs
+
 ## Features
 
 ✨ **Core Functionality**
 
 - Multi-tenant support with dynamic routing (`/[center]`)
-- Browse available services with details
+- Browse available services with details stored in Google Sheets https://docs.google.com/spreadsheets/d/1Rng09IuXdiUJtMICbaKuHLplk30JiJWfQvzCZfStRQc/edit?usp=sharing
 - Book appointments with form validation
 - Confirmation page with booking summary
 - LocalStorage persistence for bookings
@@ -17,15 +21,13 @@ A modern Next.js booking system MVP that allows clients to view beauty center se
 - Professional TailwindCSS styling
 - Responsive mobile-first design
 - Loading states and error handling
-- Smooth animations and transitions
-- Color-coded feedback (success, errors)
 
 ⚙️ **Technical**
 
 - Next.js 16 with App Router
 - TypeScript for type safety
 - Form validation with custom rules
-- Simulated API with realistic delays
+- Data fetching from Google Sheets
 - Component-based architecture
 
 ## Tech Stack
@@ -35,24 +37,15 @@ A modern Next.js booking system MVP that allows clients to view beauty center se
 - **Styling**: TailwindCSS v4
 - **State Management**: React Hooks
 - **Data Persistence**: LocalStorage
+- **Data storage**: Google Sheets
 
 ## Installation & Setup
 
-### Option 1: Using shadcn CLI (Recommended)
+### Option 1: Manual Setup
 
 \`\`\`bash
-npm install -g @shadcn-cli/auto
-shadcn-cli@latest init -d
-
-# Copy the code into your project
-
-\`\`\`
-
-### Option 2: Manual Setup
-
-\`\`\`bash
-git clone <repository-url>
-cd beauty-booking-system
+git clone [<repository-url>](https://github.com/GuidoMantegna/arionkoder-challenge.git)
+cd arionkoder-challenge
 npm install
 npm run dev
 \`\`\`
@@ -87,8 +80,13 @@ Visit `http://localhost:3000` in your browser.
 
 \`\`\`
 src/
+├── **tests**/
+│ ├── components/ # end to end tests with React Testing Lib.
+│ └── lib/ # unit tests with Jest
 ├── app/
 │ ├── layout.tsx # Root layout with metadata
+| ├── loading.tsx # Root loading component
+| ├── error.tsx # Root error component
 │ ├── globals.css # Global styles & design tokens
 │ ├── page.tsx # Home page with center list
 │ └── [center]/
@@ -96,13 +94,18 @@ src/
 │ └── confirmation/
 │ └── page.tsx # Booking confirmation
 ├── components/
+| ├── center-action.tsx # Main container for center services/booking
 │ ├── center-landing.tsx # Main landing component
+| ├── center-card.tsx # Center card to be displayed in main landing
 │ ├── service-card.tsx # Service display card
 │ ├── booking-modal.tsx # Modal wrapper
 │ ├── booking-form.tsx # Form with validation
 │ └── confirmation-content.tsx # Confirmation details
 └── lib/
+├── api.ts # API methods to fetch data from Google Sheets
+├── constants.ts # Project shared constants
 ├── types.ts # TypeScript interfaces
+├── utils.ts # AProject shared utils
 └── validation.ts # Form validation logic
 \`\`\`
 
@@ -126,13 +129,12 @@ src/
 
 ## Unimplemented Features
 
+- 📆 Booked services list
 - 🔐 User authentication & accounts
 - 💾 Backend database integration
 - 📧 Email confirmations
 - 🗓️ Availability management
 - 🚫 Booking cancellation/rescheduling
-- 💳 Payment processing
-- 📱 SMS notifications
 - 🔍 Service search/filtering
 
 ## Deployment
@@ -176,23 +178,20 @@ The test coverage focuses on critical business logic that directly impacts user 
 
 ## Design System
 
-### Colors
+### Colors Palette
 
-- **Primary**: Purple (#8b5cf6) - Main CTAs and branding
-- **Primary Dark**: Deeper purple (#7c3aed) - Hover states
-- **Secondary**: Cyan (#06b6d4) - Accent elements
-- **Accent**: Amber (#f59e0b) - Highlights
-- **Neutral**: Gray scale for text and borders
+- **--color-custom-1 | Primary**: (#706d54) - Main CTAs and branding
+- **--color-custom-2 | Secondary**: (#a08963) - Accent elements
+- **--color-custom-3**: (#c9b194) - Highlights
+- **--color-custom-4**: (#dbdbdb) - Gray scale for text and borders
 
 ### Typography
 
-- **Headings**: Geist (sans-serif)
-- **Body**: Geist (sans-serif)
-- **Monospace**: Geist Mono (for technical content)
+- **Headings**: Playfair Display (serif)
+- **Body**: Playfair Display (serif)
 
 ## Performance Considerations
 
-- Images are optimized with Next.js Image component when implemented
 - API calls simulated with realistic 1.5s delay to mimic production
 - Form validation is client-side only (instant feedback)
 - Loading states prevent premature submissions
@@ -201,22 +200,22 @@ The test coverage focuses on critical business logic that directly impacts user 
 
 1. **Backend Integration**: Connect to real database
 2. **Authentication**: Add user accounts and admin panel
-3. **Payment**: Integrate Stripe for deposits
-4. **Notifications**: Email & SMS confirmations
-5. **Analytics**: Track bookings and popular services
-6. **Availability**: Real-time slot management
-7. **Reviews**: Add ratings and testimonials
-8. **Calendar Integration**: Sync with Google Calendar
+3. **Reviews**: Add ratings and testimonials
+4. **Calendar Integration**: Sync with Google Calendar
 
 ## AI Tool Documentation
 
-This project was generated with v0 (Vercel AI). The following features were AI-assisted:
+This project incorporates the support of several AI tools to improve productivity, exploration, and creative processes. Their usage was limited to ideation, troubleshooting, and content generation — all final decisions, implementations, and refactors were performed manually.
 
-- Architecture and component structure design
-- Form validation logic
-- TypeScript type definitions
-- Responsive layout design
-- Loading and error state patterns
+### 🧠 AI Tools Used
+
+**v0.dev** – Used to generate an initial draft version of the project and run early tests. I selectively integrated useful outputs and refactored any generated code that required adjustments.
+
+**Gemini Banana Pro** – Used exclusively for generating project-related images.
+
+**Gemini / ChatGPT** – Used to clarify doubts, validate ideas, and obtain guidance during the development process.
+
+**Windsurf (Code Assistant)** – Used as an AI-powered coding assistant for suggestions and productivity boosts throughout development.
 
 ## License
 
