@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { Booking } from "@/lib/types";
 import Link from "next/link";
+import { BookingCard } from "./booking-card";
 
 export function ConfirmationContent() {
   const searchParams = useSearchParams();
@@ -63,72 +64,7 @@ export function ConfirmationContent() {
           </div>
 
           {/* Booking Details */}
-          <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 mb-6 space-y-4">
-            <div>
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
-                Service
-              </p>
-              <p className="font-semibold text-foreground text-lg">
-                {booking.serviceName}
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
-                  Date
-                </p>
-                <p className="font-semibold text-foreground">
-                  {new Date(booking.date).toLocaleDateString("en-US", {
-                    weekday: "short",
-                    month: "short",
-                    day: "numeric",
-                  })}
-                </p>
-              </div>
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
-                  Time
-                </p>
-                <p className="font-semibold text-foreground">{booking.time}</p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
-                  Duration
-                </p>
-                <p className="font-semibold text-foreground">
-                  {booking.duration} min
-                </p>
-              </div>
-              <div>
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
-                  Price
-                </p>
-                <p className="font-bold text-lg text-primary">
-                  ${booking.price}
-                </p>
-              </div>
-            </div>
-
-            <div className="pt-4 border-t border-primary/20">
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
-                Client Name
-              </p>
-              <p className="font-semibold text-foreground">{booking.name}</p>
-            </div>
-
-            <div>
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
-                Email
-              </p>
-              <p className="font-semibold text-foreground break-all">
-                {booking.email}
-              </p>
-            </div>
-          </div>
+          <BookingCard service={booking} />
 
           {/* Confirmation Message */}
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
