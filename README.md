@@ -3,7 +3,9 @@
 A modern Next.js booking system MVP that allows clients to view beauty center services and schedule appointments online.
 
 **🚀 Deploy:** https://arionkoder-challenge.vercel.app/
+
 **📂 Repo:** https://github.com/GuidoMantegna/arionkoder-challenge
+
 **⏱️ Total time invested:** 24hrs
 
 ## Features
@@ -43,12 +45,12 @@ A modern Next.js booking system MVP that allows clients to view beauty center se
 
 ### Option 1: Manual Setup
 
-\`\`\`bash
-git clone [<repository-url>](https://github.com/GuidoMantegna/arionkoder-challenge.git)
+```bash
+git clone https://github.com/GuidoMantegna/arionkoder-challenge.git
 cd arionkoder-challenge
 npm install
 npm run dev
-\`\`\`
+```
 
 Visit `http://localhost:3000` in your browser.
 
@@ -78,7 +80,7 @@ Visit `http://localhost:3000` in your browser.
 
 ## Project Structure
 
-\`\`\`
+``` bash
 src/
 ├── **tests**/
 │ ├── components/ # end to end tests with React Testing Lib.
@@ -107,7 +109,7 @@ src/
 ├── types.ts # TypeScript interfaces
 ├── utils.ts # AProject shared utils
 └── validation.ts # Form validation logic
-\`\`\`
+```
 
 ## Technical Decisions & Assumptions
 
@@ -141,7 +143,7 @@ src/
 
 ### Deploy to Vercel (Recommended)
 
-\`\`\`bash
+```bash
 
 # Push to GitHub first
 
@@ -151,13 +153,13 @@ git push origin main
 
 # https://vercel.com/new
 
-\`\`\`
+```
 
 Or use Vercel CLI:
-\`\`\`bash
+```bash
 npm install -g vercel
 vercel
-\`\`\`
+```
 
 ## Environment Variables
 
@@ -173,8 +175,12 @@ The test coverage focuses on critical business logic that directly impacts user 
 
 **To run the tests**, use:
 
-- `npm run test` - Run tests once
-- `npm run test:watch` - Run tests in watch mode during development
+```bash
+# Run tests once
+npm run test
+# Run tests in watch mode during development
+npm run test:watch
+```
 
 ## Design System
 
