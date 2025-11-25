@@ -7,7 +7,7 @@ export async function generateMetadata({
   params: Promise<{ center: string }>;
 }) {
   const { center } = await params;
-  const centerData = await api.fetch(center);
+  const centerData = await api.fetchCenterById(center);
 
   return {
     title: centerData.name,

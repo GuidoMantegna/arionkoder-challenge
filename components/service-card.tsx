@@ -11,7 +11,7 @@ interface ServiceCardProps {
 export function ServiceCard({ service, onBook }: ServiceCardProps) {
   return (
     <div
-      className={`border border-border rounded-xl p-6 hover:shadow-lg hover:border-primary/30 h-full flex flex-col hover:scale-102 hover:bg-secondary/25 ${TRANSITIONS_STYLES}`}
+      className={`border border-border rounded-xl p-6 hover:shadow-lg hover:border-primary/30 h-full flex flex-col hover:scale-102 hover:bg-secondary/10 ${TRANSITIONS_STYLES}`}
     >
       <h3 className="text-xl font-semibold text-foreground mb-2">
         {service.name}

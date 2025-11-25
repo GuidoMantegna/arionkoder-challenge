@@ -7,7 +7,7 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen bg-background">
-      <div className="h-[300px] bg-[url(/back-img-1.png)] bg-cover bg-no-repeat bg-center">
+      <div className="h-[65vh] md:h-[350px] bg-[url(/back-img-1.png)] bg-cover bg-no-repeat bg-center">
         <div className="container mx-auto max-w-5xl text-center">
           <h1 className="pt-10 text-5xl md:text-6xl font-bold mb-4 tracking-tight">
             Beauty & Wellness Bookings
@@ -19,7 +19,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <h2 className="text-3xl p-10 mb-10 text-center bg-secondary text-white">
+      <h2 className="text-3xl p-16 mb-10 text-center bg-secondary text-white">
         FEATURED BEAUTY CENTERS
       </h2>
       <div className="container mx-auto px-4 max-w-5xl">
